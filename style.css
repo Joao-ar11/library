@@ -19,7 +19,7 @@ a {
   min-height: 100vh;
 
   display: grid;
-  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 6fr 50px;
 }
 
 header {
@@ -75,6 +75,7 @@ footer a img {
 
 main {
   padding: 20px;
+  position: relative;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -91,4 +92,77 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.addBook {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  z-index: 1;
+
+  height: 50px;
+  width: 50px;
+  background-image: linear-gradient(130deg, #7272f7, #2828f5);
+  color: #ffffff;
+  font-size: 40px;
+  border: none;
+  border-radius: 25px;
+}
+
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.bookForm {
+  padding: 30px;
+  padding-bottom: 40px;
+  height: 400px;
+  width: 300px;
+  background-color: #ffffff;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.bookForm > input {
+  padding-left: 5px;
+  margin: 5px 0 20px 0;
+  height: 1.5rem;
+  background-color: #e0e0e0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.bookForm fieldset {
+  border: none;
+}
+
+.bookForm button {
+  align-self: center;
+  cursor: pointer;
+
+  margin-top: auto;
+  height: 2.5rem;
+  width: 80%;
+  background-image: linear-gradient(130deg, #7272f7, #2828f5);
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
 }
