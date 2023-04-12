@@ -94,6 +94,18 @@ main {
   justify-content: space-between;
 }
 
+.book button {
+  cursor: pointer;
+  margin-left: auto;
+  height: 1.3rem;
+  width: 75px;
+  background-image: linear-gradient(320deg, rgb(187, 28, 28), #ff0000);
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
 .addBook {
   cursor: pointer;
   position: absolute;
@@ -122,6 +134,7 @@ main {
 }
 
 .bookForm {
+  position: relative;
   padding: 30px;
   padding-bottom: 40px;
   height: 400px;
@@ -153,7 +166,19 @@ input::-webkit-inner-spin-button {
   border: none;
 }
 
-.bookForm button {
+.bookForm button:first-child {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 1.3rem;
+  background-color: inherit;
+  border: none;
+  font-size: 1.1rem;
+}
+
+.bookForm button:last-child {
   align-self: center;
   cursor: pointer;
 
