@@ -94,6 +94,10 @@ main {
   justify-content: space-between;
 }
 
+.book > div > input {
+  margin-right: 5px;
+}
+
 .book button {
   cursor: pointer;
   margin-left: auto;
