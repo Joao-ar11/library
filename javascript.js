@@ -18,15 +18,17 @@ function openModal() {
 }
 
 function addToBookList(bookList) {
-  const title = document.querySelector("#title").value;
-  const author = document.querySelector("#author").value;
-  const pages = +document.querySelector("#pages").value;
-  const read = document.querySelector("#read").checked;
-  bookList.push(new Book(title, author, pages, read));
-  document.querySelector("#title").value = "";
-  document.querySelector("#author").value = "";
-  document.querySelector("#pages").value = "";
-  document.querySelector("#read").checked = false;
+  const title = document.querySelector("#title");
+  const author = document.querySelector("#author");
+  const pages = document.querySelector("#pages");
+  const read = document.querySelector("#read");
+  bookList.push(
+    new Book(title.value, author.value, +pages.value, read.checked)
+  );
+  title.value = "";
+  author.value = "";
+  pages.value = "";
+  read.checked = false;
 }
 
 function addEntry(bookList, id) {
@@ -51,6 +53,9 @@ function addEntry(bookList, id) {
   check.type = "checkbox";
   check.id = `read-book-${id}`;
   check.checked = book.haveRead;
+  check.addEventListener("change", () => {
+    book.haveRead = check.checked;
+  });
   const label = document.createElement("label");
   label.textContent = "Have read";
   label.htmlFor = `read-book-${id}`;
