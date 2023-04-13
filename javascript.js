@@ -20,12 +20,17 @@ function openModal() {
 function addToBookList(bookList) {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
-  const pages = document.querySelector("#pages").value;
+  const pages = +document.querySelector("#pages").value;
   const read = document.querySelector("#read").checked;
   bookList.push(new Book(title, author, pages, read));
+  document.querySelector("#title").value = "";
+  document.querySelector("#author").value = "";
+  document.querySelector("#pages").value = "";
+  document.querySelector("#read").checked = false;
 }
 
-function addEntry(book, id) {
+function addEntry(bookList, id) {
+  const book = bookList[bookList.length - 1];
   const newBook = document.createElement("div");
   newBook.classList.add("book");
 
@@ -38,7 +43,7 @@ function addEntry(book, id) {
   newBook.appendChild(author);
 
   const pages = document.createElement("p");
-  pages.textContent = book.pages;
+  pages.textContent = `Pages: ${book.pages}`;
   newBook.appendChild(pages);
 
   const checkDiv = document.createElement("div");
@@ -55,22 +60,28 @@ function addEntry(book, id) {
 
   const removeButton = document.createElement("button");
   removeButton.textContent = "Remove";
+  removeButton.addEventListener("click", () => {
+    newBook.remove();
+    bookList.splice(bookList.length - 1, 1);
+  });
   newBook.appendChild(removeButton);
 
-  document.querySelector("main").appendChild(newBook);
+  document.querySelector(".library").appendChild(newBook);
 }
 
-function addBook(bookList) {
+function addBook(bookList, id) {
   addToBookList(bookList);
-  addEntry(bookList[bookList.length - 1], bookList.length - 1);
+  addEntry(bookList, id);
 }
 
 const bookList = [];
+let id = 1;
 const addBookButton = document.querySelector(".addBook");
 addBookButton.addEventListener("click", openModal);
 const bookForm = document.querySelector(".bookForm");
 bookForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  addBook(bookList);
+  addBook(bookList, id);
+  id += 1;
   document.querySelector(".modal").style.display = "none";
 });
